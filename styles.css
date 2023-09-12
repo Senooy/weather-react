@@ -54,11 +54,40 @@
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
 }
 
-.weather-text {
+.weather-part {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 0 10px 0;
 }
 
 .weather-item {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
+    flex: none;
+    margin-right: 20px; 
+    align-items: center;
+}
+
+.weather-list {
+    display: flex;         /* Alignement horizontal des éléments */
+    overflow-x: auto;      /* Active le défilement horizontal */
+    white-space: nowrap;   /* Garde les éléments en ligne même si la largeur est dépassée */
+}
+
+.weather-list::-webkit-scrollbar {
+    display: none;
+}
+
+.weather-list {
+    -ms-overflow-style: none;
+}
+
+.weather-item-hour {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.weather-item-temperature {
+    font-size: 16px;
+    margin-left: 10px;  /* Espace entre l'heure et la température */
 }
