@@ -1,12 +1,37 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import './styles.css';
+
+const currentDate = new Date();
+const currentHour = currentDate.getUTCHours();
+const currentIndex = hourly.time.findIndex(time => new Date(time).getUTCHours() === currentHour);
+
+
+const apiURL = 'https://api.open-meteo.com/v1/forecast?latitude=50.6942&longitude=3.1746&hourly=temperature_2m';
+
+fetch(apiURL)
+.then(response => {
+    if (!response.ok) {
+        throw new Error ('La requête a échouée')
+    }
+    return response.json();
+})
+.then(data => {
+
+    console.log(data);
+
+})
+.catch(error => {
+    console.error(error);
+});
+
 
 function App() {
   return (
     <main className="App">
       <div className="weather-header">
 
-      <video autoPlay loop muted>
+      <video autoPlay loop muted>r.
           <source src="/video.mp4" type="video/mp4" />
       </video>
 
