@@ -1,32 +1,29 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import './styles.css';
+import '/styles.css'
 
 const currentDate = new Date();
 const currentHour = currentDate.getUTCHours();
-const currentIndex = hourly.time.findIndex(time => new Date(time).getUTCHours() === currentHour);
 
 
 const apiURL = 'https://api.open-meteo.com/v1/forecast?latitude=50.6942&longitude=3.1746&hourly=temperature_2m';
 
-fetch(apiURL)
-.then(response => {
-    if (!response.ok) {
-        throw new Error ('La requête a échouée')
-    }
-    return response.json();
-})
-.then(data => {
-
-    console.log(data);
-
-})
-.catch(error => {
-    console.error(error);
-});
-
-
 function App() {
+
+    useEffect(() => {
+        console.log('useEffect');
+        fetch(apiURL)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setWeather(data);
+            });
+    }
+    , []);
+
+
+    const [weather, setWeather] = useState(null);
+
   return (
     <main className="App">
       <div className="weather-header">
